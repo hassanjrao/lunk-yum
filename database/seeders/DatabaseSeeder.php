@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             WeekSeeder::class,
             DaySeeder::class,
             MenuSeeder::class,
+            PlanSeeder::class
         ]);
     }
 }

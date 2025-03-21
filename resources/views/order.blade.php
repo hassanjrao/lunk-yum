@@ -49,10 +49,11 @@
                                 @endphp
                                 <label for="">School</label>
 
-                                <select class="form-control" name="school_id" required>
+                                <select class="form-select" name="school_id" required>
                                     <option value="">Select School</option>
                                     @foreach ($schools as $school)
-                                        <option value="{{ $school->id }}" {{ old('school_id') == $school->id ? 'selected' : '' }}>
+                                        <option value="{{ $school->id }}"
+                                            {{ old('school_id') == $school->id ? 'selected' : '' }}>
                                             {{ $school->name }}</option>
                                     @endforeach
                                 </select>
@@ -105,6 +106,31 @@
 
                             </div>
 
+                            <div class="col-md-6">
+                                <label for="">Choose Plan</label>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" id="plan"
+                                        name="plan_id" value="1" checked>
+                                    <label class="form-check-label" for="plan">
+                                        Weekly Plan (PKR 1495 per week)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="plan_id" id="plan2"
+                                        value="2">
+                                    <label class="form-check-label" for="plan2">
+                                        Monthly Plan (PKR 5499 per month)
+                                    </label>
+                                </div>
+
+                                @error('subscription_plan')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
 
 
                             <div class="col-md-6">
@@ -121,31 +147,18 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="">Ends At</label>
-                                <input type="date" name="ends_at" id="endDate" class="form-control"
-                                    placeholder="Ends At" value="{{ old('ends_at') }}">
-
-                                @error('ends_at')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-                            <div class="col-md-6">
                                 <label for="">Payment Method</label>
 
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" onclick="toggleReceiptField()"
-                                        id="bankTransfer" name="payment_method" value="option1" checked>
+                                        id="bankTransfer" name="payment_method" value="bank_transfer" checked>
                                     <label class="form-check-label" for="bankTransfer">
                                         Bank Transfer
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" onclick="toggleReceiptField()"
-                                        disabled name="payment_method" id="radio2" value="option2">
+                                        disabled name="payment_method" id="radio2" value="card">
                                     <label class="form-check-label" for="radio2">
                                         Card
                                     </label>
@@ -158,6 +171,7 @@
                                 @enderror
 
                             </div>
+
 
                             <div class="col-md-6" id="receiptUpload" style="display: none;">
                                 <label for="">Upload Payment Receipt</label>
@@ -201,36 +215,31 @@
         }
 
 
-        function getNextMonday(date = new Date()) {
-            let day = date.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-            let daysUntilNextMonday = (day === 0) ? 1 : (8 - day); // If today is Sunday, next Monday is in 1 day
-            date.setDate(date.getDate() + daysUntilNextMonday);
+        function getNextMonday(date) {
+            let day = date.getDay();
+            let diff = (day === 1) ? 0 : (day === 0 ? 1 : 8 - day); // Find next Monday
+            date.setDate(date.getDate() + diff);
             return date;
         }
 
-        function disableNonMondays() {
-            let startDateField = document.getElementById("startDate");
+        function restrictToMondays() {
+            const dateInput = document.getElementById("startDate");
+
             let today = new Date();
-            let nextMonday = getNextMonday(today);
+            let nextMonday = getNextMonday(new Date(today));
 
-            // Set the min date to the next Monday
-            let formattedDate = nextMonday.toISOString().split("T")[0];
-            startDateField.min = formattedDate;
-            startDateField.value = formattedDate;
-
-            startDateField.addEventListener("input", function() {
-                let selectedDate = new Date(this.value);
-                if (selectedDate.getDay() !== 1) {
-                    alert("You can only select a Monday!");
-                    this.value = formattedDate; // Reset to the next Monday
-                }
-            });
+            dateInput.min = nextMonday.toISOString().split("T")[0];
+            dateInput.step = "7"; // Allows selection only every 7 days (Mondays)
         }
+
+
+
 
 
         window.onload = function() {
             toggleReceiptField();
-            disableNonMondays();
+            restrictToMondays();
+
         };
     </script>
 @endpush

@@ -1691,7 +1691,7 @@ section,
         padding: 20px;
     }
 }
-
+/*
 .site-form input[type=text],
 .site-form input[type=email],
 .site-form textarea {
@@ -1714,7 +1714,7 @@ section,
 .site-form input[type=email]::placeholder,
 .site-form textarea::placeholder {
     color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
+} */
 
 .site-form button[type=submit] {
     color: var(--contrast-color);

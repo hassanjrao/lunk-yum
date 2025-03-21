@@ -29,13 +29,13 @@
         <div class="container">
             <div class="row gy-4 justify-content-center justify-content-lg-between">
                 <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
-                    <h1 data-aos="fade-up">Enjoy Your Healthy<br>Delicious Food</h1>
-                    <p data-aos="fade-up" data-aos-delay="100">We are team of talented designers making websites
-                        with Bootstrap</p>
+                    <h1 data-aos="fade-up">
+                        Hygienic Hassle-Free School Launches
+                    </h1>
 
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-                    <img src="{{ asset('front-assets/img/hero-img.png') }}" class="img-fluid animated" alt="">
+                    <img src="{{ asset('front-assets/img/pic 3.webp') }}" class="img-fluid animated" alt="">
                 </div>
             </div>
         </div>
@@ -55,37 +55,28 @@
 
             <div class="row gy-4">
                 <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
-                    <img src="{{ asset('front-assets/img/about.jpg') }}" class="img-fluid mb-4" alt="">
+                    <img src="{{ asset('front-assets/img/pic 5.webp') }}" class="img-fluid mb-4" alt="">
                     <div class="book-a-table">
-                        <h3>Singup Now</h3>
+                        <h3>Order Now</h3>
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
                     <div class="content ps-0 ps-lg-5">
-                        <p class="fst-italic">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore
-                            magna aliqua.
-                        </p>
-                        <ul>
-                            <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat.</span></li>
-                            <li><i class="bi bi-check-circle-fill"></i> <span>Duis aute irure dolor in
-                                    reprehenderit in voluptate velit.</span></li>
-                            <li><i class="bi bi-check-circle-fill"></i> <span>Ullamco laboris nisi ut aliquip ex ea
-                                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
-                                    storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-                        </ul>
+
                         <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident
+                            At <b>Yum4Kids</b>, we believe that every child deserves a nutritious, delicious, and
+                            hassle-free lunch. Our mission is to provide <b>fresh, balanced, and hygienically prepared
+                                meals</b> that fuel students throughout their busy school day. With a focus on <b>quality
+                                ingredients, variety, and convenience</b>, we take the stress out of packing lunches for
+                            parents while ensuring kids enjoy meals they love. Our expert chefs craft wholesome,
+                            kid-approved menus that cater to different dietary needs, all delivered safely and on time to
+                            schools. With <b>Yum4Kids, lunchtime is easy, healthy, and worry-free!</b>
+
                         </p>
 
                         <div class="position-relative mt-4">
-                            <img src="{{ asset('front-assets/img/about-2.jpg') }}" class="img-fluid" alt="">
-                            <a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn"></a>
+                            <img src="{{ asset('front-assets/img/pic 6.webp') }}" class="img-fluid" alt="">
+
                         </div>
                     </div>
                 </div>
@@ -100,25 +91,32 @@
 
         <div class="container">
 
-            <div class="row gy-4">
+            <div class="row gy-4 justify-content-center">
 
-                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
                     <div class="why-box">
                         <h3>Why Choose {{ config('app.name') }}</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                            incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                            Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus
-                            optio ad corporis.
+
+                        <h4 class="text-white">🍏 Nutrition Meets Convenience</h4>
+                        <p> At <b>Yum4Kids</b>, we make healthy eating easy! Our meals are crafted
+                            with fresh, high-quality ingredients to provide balanced nutrition that keeps kids energized and
+                            focused throughout the school day.</p>
+                        <h4 class="text-white">🥗 Safe, Hygienic, and Delicious</h4>
+                        <p>Food safety is our top priority. We prepare every meal in a
+                            <b>certified, hygienic kitchen</b> following strict quality standards, ensuring that your
+                            child’s lunch
+                            is both safe and delicious.
                         </p>
-                        <div class="text-center">
-                            <a href="#" class="more-btn"><span>Learn More</span> <i
-                                    class="bi bi-chevron-right"></i></a>
-                        </div>
+                        <h4 class="text-white">🚀 Stress-Free for Parents</h4>
+                        <p>Say goodbye to the morning lunch rush! With <b>Yum4Kids</b>, parents can
+                            enjoy peace of mind knowing their child receives a wholesome, ready-to-eat meal—freshly prepared
+                            and delivered directly to school.</p>
+
+
                     </div>
                 </div><!-- End Why Box -->
 
-                <div class="col-lg-8 d-flex align-items-stretch">
+                {{-- <div class="col-lg-8 d-flex align-items-stretch">
                     <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
 
                         <div class="col-xl-4">
@@ -149,7 +147,7 @@
                         </div><!-- End Icon Box -->
 
                     </div>
-                </div>
+                </div> --}}
 
             </div>
 
@@ -157,52 +155,6 @@
 
     </section><!-- /Why Us Section -->
 
-    <!-- Stats Section -->
-    <section id="stats" class="stats section dark-background">
-
-        <img src="{{ asset('front-assets/img/stats-bg.jpg') }}" alt="" data-aos="fade-in">
-
-        <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="row gy-4">
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Clients</p>
-                    </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Projects</p>
-                    </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Hours Of Support</p>
-                    </div>
-                </div><!-- End Stats Item -->
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="stats-item text-center w-100 h-100">
-                        <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1"
-                            class="purecounter"></span>
-                        <p>Workers</p>
-                    </div>
-                </div><!-- End Stats Item -->
-
-            </div>
-
-        </div>
-
-    </section><!-- /Stats Section -->
 
     <!-- Menu Section -->
     <section id="menu" class="menu section">
@@ -250,8 +202,8 @@
 
                     @php
                         $menu = \App\Models\Menu::where('week_id', 1)
-                        ->with(['day'])
-                        ->get();
+                            ->with(['day'])
+                            ->get();
                     @endphp
 
                     <div class="tab-header text-center">
@@ -292,9 +244,9 @@
 
                     @php
                         $menu = \App\Models\Menu::where('week_id', 2)
-                        ->with(['day'])
-                        ->orderBy('day_id')
-                        ->get();
+                            ->with(['day'])
+                            ->orderBy('day_id')
+                            ->get();
                     @endphp
 
                     <div class="tab-header text-center">
@@ -335,8 +287,8 @@
 
                     @php
                         $menu = \App\Models\Menu::where('week_id', 3)
-                        ->with(['day'])
-                        ->get();
+                            ->with(['day'])
+                            ->get();
                     @endphp
 
                     <div class="tab-header text-center">
@@ -377,8 +329,8 @@
 
                     @php
                         $menu = \App\Models\Menu::where('week_id', 4)
-                        ->with(['day'])
-                        ->get();
+                            ->with(['day'])
+                            ->get();
                     @endphp
 
                     <div class="tab-header text-center">
@@ -420,158 +372,6 @@
 
     </section><!-- /Menu Section -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-            <h2>TESTIMONIALS</h2>
-            <p>What Are They <span class="description-title">Saying About Us</span></p>
-        </div><!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="swiper init-swiper">
-                <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              }
-            }
-          </script>
-                <div class="swiper-wrapper">
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="row gy-4 justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="testimonial-content">
-                                        <p>
-                                            <i class="bi bi-quote quote-icon-left"></i>
-                                            <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora
-                                                entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam
-                                                eget nibh et. Maecen aliquam, risus at semper.</span>
-                                            <i class="bi bi-quote quote-icon-right"></i>
-                                        </p>
-                                        <h3>Saul Goodman</h3>
-                                        <h4>Ceo &amp; Founder</h4>
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 text-center">
-                                    <img src="{{ asset('front-assets/img/testimonials/testimonials-1.jpg') }}"
-                                        class="img-fluid testimonial-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="row gy-4 justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="testimonial-content">
-                                        <p>
-                                            <i class="bi bi-quote quote-icon-left"></i>
-                                            <span>Export tempor illum tamen malis malis eram quae irure esse labore
-                                                quem cillum quid cillum eram malis quorum velit fore eram velit sunt
-                                                aliqua noster fugiat irure amet legam anim culpa.</span>
-                                            <i class="bi bi-quote quote-icon-right"></i>
-                                        </p>
-                                        <h3>Sara Wilsson</h3>
-                                        <h4>Designer</h4>
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 text-center">
-                                    <img src="{{ asset('front-assets/img/testimonials/testimonials-2.jpg') }}"
-                                        class="img-fluid testimonial-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="row gy-4 justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="testimonial-content">
-                                        <p>
-                                            <i class="bi bi-quote quote-icon-left"></i>
-                                            <span>Enim nisi quem export duis labore cillum quae magna enim sint
-                                                quorum nulla quem veniam duis minim tempor labore quem eram duis
-                                                noster aute amet eram fore quis sint minim.</span>
-                                            <i class="bi bi-quote quote-icon-right"></i>
-                                        </p>
-                                        <h3>Jena Karlis</h3>
-                                        <h4>Store Owner</h4>
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 text-center">
-                                    <img src="{{ asset('front-assets/img/testimonials/testimonials-3.jpg') }}"
-                                        class="img-fluid testimonial-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                    <div class="swiper-slide">
-                        <div class="testimonial-item">
-                            <div class="row gy-4 justify-content-center">
-                                <div class="col-lg-6">
-                                    <div class="testimonial-content">
-                                        <p>
-                                            <i class="bi bi-quote quote-icon-left"></i>
-                                            <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos
-                                                export minim fugiat minim velit minim dolor enim duis veniam ipsum
-                                                anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                                            <i class="bi bi-quote quote-icon-right"></i>
-                                        </p>
-                                        <h3>John Larson</h3>
-                                        <h4>Entrepreneur</h4>
-                                        <div class="stars">
-                                            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i
-                                                class="bi bi-star-fill"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 text-center">
-                                    <img src="{{ asset('front-assets/img/testimonials/testimonials-4.jpg') }}"
-                                        class="img-fluid testimonial-img" alt="">
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End testimonial item -->
-
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
-
-        </div>
-
-    </section><!-- /Testimonials Section -->
 
 
 
@@ -587,50 +387,35 @@
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="mb-5">
-                <iframe style="width: 100%; height: 400px;"
-                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                    frameborder="0" allowfullscreen=""></iframe>
-            </div><!-- End Google Maps -->
 
             <div class="row gy-4">
 
-                <div class="col-md-6">
-                    <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
-                        <i class="icon bi bi-geo-alt flex-shrink-0"></i>
-                        <div>
-                            <h3>Address</h3>
-                            <p>A108 Adam Street, New York, NY 535022</p>
-                        </div>
-                    </div>
-                </div><!-- End Info Item -->
-
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
                         <i class="icon bi bi-telephone flex-shrink-0"></i>
                         <div>
                             <h3>Call Us</h3>
-                            <p>+1 5589 55488 55</p>
+                            <p>0330 3038184</p>
                         </div>
                     </div>
                 </div><!-- End Info Item -->
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="400">
                         <i class="icon bi bi-envelope flex-shrink-0"></i>
                         <div>
                             <h3>Email Us</h3>
-                            <p>info@example.com</p>
+                            <p>sales@Yum4Kids.pk</p>
                         </div>
                     </div>
                 </div><!-- End Info Item -->
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
                         <i class="icon bi bi-clock flex-shrink-0"></i>
                         <div>
                             <h3>Opening Hours<br></h3>
-                            <p><strong>Mon-Sat:</strong> 11AM - 23PM; <strong>Sunday:</strong> Closed</p>
+                            <p>9am-5pm</p>
                         </div>
                     </div>
                 </div><!-- End Info Item -->

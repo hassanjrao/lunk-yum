@@ -16,9 +16,10 @@ class AdminOrderNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+    public $user;
+    public function __construct($user)
     {
-        //
+        $this->user=$user;
     }
 
     /**
@@ -41,9 +42,14 @@ class AdminOrderNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('New User Subscribed')
+                    ->line('A new user has subscribed with following details')
+                    ->line('Name: '.$this->user->name)
+                    ->line('Email: '.$this->user->email)
+                    ->line('Plan: '.$this->user->plan->name)
+                    ->line('Student Name: '.$this->user->student_name)
+                    ->line('Student Grade: '.$this->user->plan->name)
+                    ->action('View', route('admin.users.index'));
     }
 
     /**

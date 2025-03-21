@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminMenuController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSchoolController;
+use App\Http\Controllers\AdminUserController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -20,13 +21,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Example Routes
-Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
-});
-Auth::routes();
+Route::view('/', 'landing')->name('landing');
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
 
 Route::get('order',[OrderController::class, 'index'])->name('order.index');
 Route::post('order',[OrderController::class, 'store'])->name('order.store');
@@ -38,7 +35,9 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
 
     Route::resource('schools',AdminSchoolController::class);
 
-
     Route::resource('menu',AdminMenuController::class);
+
+    Route::resource('users',AdminUserController::class);
+
 
 });

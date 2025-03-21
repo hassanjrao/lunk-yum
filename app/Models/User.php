@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
@@ -29,6 +30,7 @@ class User extends Authenticatable
         'ends_at',
         'payment_method',
         'payment_receipt',
+        'plan_id'
     ];
 
     /**
@@ -49,4 +51,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class)->withDefault();
+    }
+
+
+    protected $appends=['student_id_url','payment_receipt_url'];
+
+    public function getStudentIdUrlAttribute(){
+        return $this->student_id_image ? Storage::url($this->student_id_image) : null;
+    }
+
+    public function getPaymentReceiptUrlAttribute(){
+        return $this->payment_receipt ? Storage::url($this->payment_receipt) : null;
+    }
+
 }

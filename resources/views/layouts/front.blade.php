@@ -40,7 +40,7 @@
     <header id="header" class="header d-flex align-items-center sticky-top">
         <div class="container position-relative d-flex align-items-center justify-content-between">
 
-            <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+            <a href="{{ route('landing') }}" class="logo d-flex align-items-center me-auto me-xl-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
                 <!-- <img src="{{ asset('front-assets/img/logo.png')}}" alt=""> -->
                 <h1 class="sitename">{{ config('app.name') }}</h1>
@@ -73,40 +73,30 @@
 
         <div class="container">
             <div class="row gy-3">
-                <div class="col-lg-3 col-md-6 d-flex">
-                    <i class="bi bi-geo-alt icon"></i>
-                    <div class="address">
-                        <h4>Address</h4>
-                        <p>A108 Adam Street</p>
-                        <p>New York, NY 535022</p>
-                        <p></p>
-                    </div>
 
-                </div>
 
-                <div class="col-lg-3 col-md-6 d-flex">
+                <div class="col-lg-4 col-md-6 d-flex">
                     <i class="bi bi-telephone icon"></i>
                     <div>
                         <h4>Contact</h4>
                         <p>
-                            <strong>Phone:</strong> <span>+1 5589 55488 55</span><br>
-                            <strong>Email:</strong> <span>info@example.com</span><br>
+                            <strong>Phone:</strong> <span>0330 3038184</span><br>
+                            <strong>Email:</strong> <span>sales@Yum4Kids.pk</span><br>
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6 d-flex">
+                <div class="col-lg-4 col-md-6 d-flex">
                     <i class="bi bi-clock icon"></i>
                     <div>
                         <h4>Opening Hours</h4>
                         <p>
-                            <strong>Mon-Sat:</strong> <span>11AM - 23PM</span><br>
-                            <strong>Sunday</strong>: <span>Closed</span>
+                            9am-5pm
                         </p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-4 col-md-6">
                     <h4>Follow Us</h4>
                     <div class="social-links d-flex">
                         <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
@@ -122,14 +112,7 @@
         <div class="container copyright text-center mt-4">
             <p>© <span>Copyright</span> <strong class="px-1 sitename">Yummy</strong> <span>All Rights Reserved</span>
             </p>
-            <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you've purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distributed by <a
-                    href="https://themewagon.com">ThemeWagon</a>
-            </div>
+
         </div>
 
     </footer>

@@ -41,6 +41,6 @@ class ContactUsController extends Controller
             ]);
         }
 
-        return redirect()->route('landing')->withToastSucces("We've received your request, we will contact you shortly");
+        return redirect()->route('landing')->withToastSuccess("We've received your request, we will contact you shortly");
     }
 }

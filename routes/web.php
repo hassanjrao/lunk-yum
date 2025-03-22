@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminContactUsController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminMenuController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSchoolController;
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +30,8 @@ Auth::routes();
 Route::get('order',[OrderController::class, 'index'])->name('order.index');
 Route::post('order',[OrderController::class, 'store'])->name('order.store');
 
+Route::post('contact-us',[ContactUsController::class,'store'])->name('contact-us.store');
+
 Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
 
     Route::get('',[AdminDashboardController::class, 'index'])->name('dashboard.index');
@@ -38,6 +42,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('menu',AdminMenuController::class);
 
     Route::resource('users',AdminUserController::class);
+
+    Route::resource('contact-us',AdminContactUsController::class);
 
 
 });

@@ -57,7 +57,7 @@
                 <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
                     <img src="{{ asset('front-assets/img/pic 5.webp') }}" class="img-fluid mb-4" alt="">
                     <div class="book-a-table">
-                        <h3>Order Now</h3>
+                        <a href="{{ route('order.index') }}"><h3>Order Now</h3></a>
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
@@ -422,8 +422,9 @@
 
             </div>
 
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up"
+            <form action="{{ route('contact-us.store') }}" method="post" class="site-form" data-aos="fade-up"
                 data-aos-delay="600">
+                @csrf
                 <div class="row gy-4">
 
                     <div class="col-md-6">
@@ -436,18 +437,12 @@
                             required="">
                     </div>
 
-                    <div class="col-md-12">
-                        <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                    </div>
 
                     <div class="col-md-12">
                         <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
                     </div>
 
                     <div class="col-md-12 text-center">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
 
                         <button type="submit">Send Message</button>
                     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Plan;
 use App\Models\User;
 use App\Notifications\AdminOrderNotification;
 use App\Notifications\OrderNotification;
@@ -14,7 +15,8 @@ class OrderController extends Controller
 {
     public function index()
     {
-        return view('order');
+        $plans=Plan::all();
+        return view('order',compact('plans'));
     }
 
 

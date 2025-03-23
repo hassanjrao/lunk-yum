@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminContactUsController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminMenuController;
+use App\Http\Controllers\AdminPlanController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\AdminSchoolController;
 use App\Http\Controllers\AdminUserController;
@@ -46,4 +47,5 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('contact-us',AdminContactUsController::class);
 
 
+    Route::resource('plans',AdminPlanController::class);
 });

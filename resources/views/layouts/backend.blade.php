@@ -184,6 +184,13 @@
                             </a>
                         </li>
                         <li class="nav-main-item">
+                            <a class="nav-main-link{{ request()->is('admin/plans*') ? ' active' : '' }}"
+                                href="{{ route('admin.plans.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Plans</span>
+                            </a>
+                        </li>
+                        <li class="nav-main-item">
                             <a class="nav-main-link{{ request()->is('admin/menu*') ? ' active' : '' }}"
                                 href="{{ route('admin.menu.index') }}">
                                 <i class="nav-main-link-icon si si-cursor"></i>

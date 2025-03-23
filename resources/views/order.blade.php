@@ -109,20 +109,17 @@
                             <div class="col-md-6">
                                 <label for="">Choose Plan</label>
 
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" id="plan"
-                                        name="plan_id" value="1" checked>
-                                    <label class="form-check-label" for="plan">
-                                        Weekly Plan (PKR 1495 per week)
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="plan_id" id="plan2"
-                                        value="2">
-                                    <label class="form-check-label" for="plan2">
-                                        Monthly Plan (PKR 5499 per month)
-                                    </label>
-                                </div>
+                                @foreach ($plans as $ind=> $plan)
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" id="plan{{ $plan->id }}" name="plan_id"
+                                            value="{{ $plan->id }}" {{ $ind==0 ?'checked':'' }}>
+                                        <label class="form-check-label" for="plan{{ $plan->id }}">
+                                            {{ $plan->description }}
+                                        </label>
+                                    </div>
+                                @endforeach
+
+
 
                                 @error('subscription_plan')
                                     <span class="text-danger" role="alert">

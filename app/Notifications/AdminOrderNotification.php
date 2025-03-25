@@ -46,10 +46,7 @@ class AdminOrderNotification extends Notification
                     ->line('A new user has subscribed with following details')
                     ->line('Name: '.$this->user->name)
                     ->line('Email: '.$this->user->email)
-                    ->line('Plan: '.$this->user->plan->name)
-                    ->line('Student Name: '.$this->user->student_name)
-                    ->line('Student Grade: '.$this->user->plan->name)
-                    ->action('View', route('admin.users.index'));
+                    ->action('View Details', route('admin.users.index'));
     }
 
     /**

@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('front-assets/img/favicon.png')}}" rel="icon">
-    <link href="{{ asset('front-assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    {{-- <link href="{{ asset('front-assets/img/favicon.png')}}" rel="icon">
+    <link href="{{ asset('front-assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> --}}
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -50,10 +50,12 @@
             <nav id="navmenu" class="navmenu">
                 <ul>
                     <li><a href="/" class="{{ request()->is('/*') ? ' active' : '' }}">Home<br></a></li>
-                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#about">About</a></li>
-                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#menu">Menu</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#about' : route('landing') . '#about' }}">About</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#menu' : route('landing') . '#menu' }}">Menu</a></li>
                     <li><a class="{{ request()->is('dietary-needs') ? ' active' : '' }}" href="{{ route('dietary-needs') }}">Dietary Needs</a></li>
-                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#contact">Contact</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#contactss">Corporate Clients</a></li>
+                    <li><a class="{{ request()->is('faqs') ? ' active' : '' }}" href="{{ route('faqs') }}">FAQs</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#contact' : route('landing') . '#contact' }}">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>

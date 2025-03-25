@@ -30,6 +30,8 @@ Route::view('/', 'landing')->name('landing');
 
 Auth::routes();
 Route::get('dietary-needs',[FrontController::class,'dietaryNeeds'])->name('dietary-needs');
+
+Route::get('faqs',[FrontController::class,'faqs'])->name('faqs');
 Route::get('order',[OrderController::class, 'index'])->name('order.index');
 Route::get('thank-you',[OrderController::class,'thankyou'])->name('order.thankyou');
 Route::post('order',[OrderController::class, 'store'])->name('order.store');

@@ -9,4 +9,8 @@ class FrontController extends Controller
     public function dietaryNeeds(){
         return view('dietary-needs');
     }
+
+    public function faqs(){
+        return view('faqs');
+    }
 }

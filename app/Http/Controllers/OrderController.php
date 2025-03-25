@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Models\Plan;
 use App\Models\User;
 use App\Notifications\AdminOrderNotification;
@@ -25,45 +27,76 @@ class OrderController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'school_id' => ['required', 'integer', 'exists:schools,id'],
             'plan_id' => ['required', 'integer', 'exists:plans,id'],
-            'student_name' => ['required', 'string', 'max:255'],
-            'student_grade' => ['required', 'string', 'max:255'],
-            'student_id_image' => ['required', 'file', 'image', 'max:2048'],
             'starts_from' => ['required', 'date'],
-            'ends_at' => ['nullable', 'date', 'after:starts_from'],
             'payment_method' => ['required', 'string', 'max:255'],
             'payment_receipt' => ['required', 'file', 'image', 'max:2048'],
+            'students'=>'required|array',
+
         ]);
 
+        $students=$request->students;
 
-        $user = User::create([
+        $totalPrice=0;
+
+        $plan=Plan::findorfail($request->plan_id);
+
+        $totalPrice=floatval($plan->price);
+        $discount=0;
+        $discountPercentage=0;
+
+        if(count($students)>1){
+            $discountPercentage=5;
+            $discount = $totalPrice * ($discountPercentage/100) * count($students);
+        }
+
+        $totalPriceAfterDiscount=$totalPrice-$discount;
+
+
+
+        $user = User::updateOrCreate([
+            'email'=>$request->email
+        ],[
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->name . '1234'),
-            'school_id' => $request->school_id,
-            'plan_id' => $request->plan_id,
-            'student_name' => $request->student_name,
-            'student_grade' => $request->student_grade,
-            'student_id_image' => $request->student_id_image->store('student_id_images'),
-            'starts_from' => $request->starts_from,
-            // 'ends_at' => $request->ends_at,
-            'payment_method' => $request->payment_method,
-            'payment_receipt' => $request->payment_receipt->store('payment_receipts'),
         ]);
 
         $user->assignRole('user');
 
+        $order=Order::create([
+            'user_id'=>$user->id,
+            'plan_id'=>$request->plan_id,
+            'school_id'=>$request->school_id,
+            'payment_method'=>$request->payment_method,
+            'payment_receipt'=>$request->payment_receipt->store('payment_receipts'),
+            'starts_from'=>$request->starts_from,
+            'ends_at'=>$request->starts_from,
+            'discount_percentage'=>$discountPercentage,
+            'total_price'=>$totalPrice,
+            'total_price_after_discount'=>$totalPriceAfterDiscount
+        ]);
+
+        foreach($students as $student){
+            OrderDetail::create([
+                'order_id'=>$order->id,
+                'student_name'=>$student['name'],
+                'student_class'=>$student['class'],
+                'student_id_image'=>$student['image']->store('student_id_images')
+            ]);
+        }
+
         try {
-            $user->notify(new OrderNotification($user));
+            // $user->notify(new OrderNotification($user));
 
 
-            $admin = User::whereHas('roles', function ($q) {
-                $q->where('name', 'admin');
-            })->first();
+            // $admin = User::whereHas('roles', function ($q) {
+            //     $q->where('name', 'admin');
+            // })->first();
 
-            $admin->notify(new AdminOrderNotification($user));
+            // $admin->notify(new AdminOrderNotification($user));
         } catch (Exception $e) {
             Log::info('EmailOrderError', [
                 'message' => $e->getMessage(),
@@ -73,5 +106,9 @@ class OrderController extends Controller
 
 
         return redirect()->route('order.index')->withToastSuccess('Order created successfully, please check your email');
+    }
+
+    public function thankyou(){
+        return view('thankyou');
     }
 }

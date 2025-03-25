@@ -49,10 +49,11 @@
 
             <nav id="navmenu" class="navmenu">
                 <ul>
-                    <li><a href="/" class="active">Home<br></a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="/" class="{{ request()->is('/*') ? ' active' : '' }}">Home<br></a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#about">About</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#menu">Menu</a></li>
+                    <li><a class="{{ request()->is('dietary-needs') ? ' active' : '' }}" href="{{ route('dietary-needs') }}">Dietary Needs</a></li>
+                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#contact">Contact</a></li>
                 </ul>
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
@@ -91,6 +92,7 @@
                     <div>
                         <h4>Opening Hours</h4>
                         <p>
+                            Mon-Friday <br>
                             9am-5pm
                         </p>
                     </div>

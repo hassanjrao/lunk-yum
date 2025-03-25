@@ -53,20 +53,5 @@ class User extends Authenticatable
     ];
 
 
-    public function plan()
-    {
-        return $this->belongsTo(Plan::class)->withDefault();
-    }
-
-
-    protected $appends=['student_id_url','payment_receipt_url'];
-
-    public function getStudentIdUrlAttribute(){
-        return $this->student_id_image ? Storage::url($this->student_id_image) : null;
-    }
-
-    public function getPaymentReceiptUrlAttribute(){
-        return $this->payment_receipt ? Storage::url($this->payment_receipt) : null;
-    }
 
 }

@@ -36,13 +36,6 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Plan</th>
-                                <th>Starts From</th>
-                                <th>Student Name</th>
-                                <th>Student Grade</th>
-                                <th>Student ID</th>
-                                <th>Payment Method</th>
-                                <th>Payment Receipt</th>
                                 <th>Created At</th>
                                 {{-- <th>Action</th> --}}
 
@@ -58,17 +51,6 @@
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td>{{ $user->plan->name }}</td>
-                                    <td>{{ $user->starts_from }}</td>
-                                    <td>{{ $user->student_name }}</td>
-                                    <td>{{ $user->student_grade }}</td>
-                                    <td>
-                                        <img src="{{ $user->student_id_url }}" alt="" height="100px" width="100px">
-                                    </td>
-                                    <td>{{ $user->payment_method }}</td>
-                                    <td>
-                                        <img src="{{ $user->payment_receipt_url }}" alt="" height="100px" width="100px">
-                                    </td>
 
                                     <td>{{ $user->created_at }}</td>
 

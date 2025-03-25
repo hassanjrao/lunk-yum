@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'currency_code'=>env('CURRENCY_CODE','PKR'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

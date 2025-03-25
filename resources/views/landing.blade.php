@@ -30,7 +30,7 @@
             <div class="row gy-4 justify-content-center justify-content-lg-between">
                 <div class="col-lg-5 order-2 order-lg-1 d-flex flex-column justify-content-center">
                     <h1 data-aos="fade-up">
-                        Hygienic Hassle-Free School Launches
+                        Hygienic Hassle-Free School Lunches
                     </h1>
 
                 </div>
@@ -57,7 +57,9 @@
                 <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
                     <img src="{{ asset('front-assets/img/pic 5.webp') }}" class="img-fluid mb-4" alt="">
                     <div class="book-a-table">
-                        <a href="{{ route('order.index') }}"><h3>Order Now</h3></a>
+                        <a href="{{ route('order.index') }}">
+                            <h3>Order Now</h3>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="250">
@@ -415,7 +417,8 @@
                         <i class="icon bi bi-clock flex-shrink-0"></i>
                         <div>
                             <h3>Opening Hours<br></h3>
-                            <p>9am-5pm</p>
+                            <p>Mon-Friday <br>
+                                9am-5pm</p>
                         </div>
                     </div>
                 </div><!-- End Info Item -->

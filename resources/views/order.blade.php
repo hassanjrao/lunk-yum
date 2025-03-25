@@ -2,6 +2,11 @@
 
 @section('page-name', 'Order Now')
 
+@section('styles')
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+@endsection
+
 @section('content')
     <section class="contact section">
         <div class="container section-title aos-init aos-animate" data-aos="fade-up" style="padding-bottom: 0px">
@@ -11,7 +16,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <form action="{{ route('order.store') }}" method="post" class="site-form aos-init aos-animate"
-                        enctype="multipart/form-data" data-aos="fade-up" data-aos-delay="600">
+                        enctype="multipart/form-data" data-aos="fade-up" data-aos-delay="600" id="orderForm"
+                        onsubmit="handleSubmit(event)">
                         @csrf
 
                         <div class="row gy-4">
@@ -40,8 +46,6 @@
                                 @enderror
                             </div>
 
-
-
                             <div class="col-md-6">
 
                                 @php
@@ -65,25 +69,10 @@
                                 @enderror
                             </div>
 
-
                             <div class="col-md-6">
-                                <label for="">Student Name</label>
-                                <input type="text" name="student_name" class="form-control" placeholder="Student Name"
-                                    required="" value="{{ old('student_name') }}">
-
-                                @error('student_name')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
-
-
-                            <div class="col-md-6">
-                                <label for="">Student Grade</label>
-                                <input type="text" name="student_grade" class="form-control" placeholder="Student Grade"
-                                    required="" value="{{ old('student_grade') }}">
+                                <label for="">Starts From</label>
+                                <input type="date" name="starts_from" id="startDate" class="form-control"
+                                    placeholder="Starts From" required="" value="{{ old('grade') }}">
 
                                 @error('grade')
                                     <span class="text-danger" role="alert">
@@ -93,28 +82,45 @@
 
                             </div>
 
-                            <div class="col-md-6">
-                                <label for="">Student ID Image</label>
-                                <input type="file" name="student_id_image" class="form-control" required
-                                    placeholder="Student ID Image" value="{{ old('student_id_image') }}">
 
-                                @error('student_id_image')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
+                            <div class="col-md-12">
+                                <label>Student Information</label>
+                                <div id="studentContainer">
+                                    <!-- Default child fields (at least one required) -->
+                                    <div class="child-entry">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <label for="">Student Name</label>
+                                                <input type="text" name="students[0][name]" class="form-control"
+                                                    placeholder="Student Name" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="">Student Class</label>
+                                                <input type="text" name="students[0][class]" class="form-control"
+                                                    placeholder="Student Class" required>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label for="">Student ID</label>
+                                                <input type="file" name="students[0][image]" class="form-control"
+                                                    required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="button" id="addStdBtn" class="btn btn-secondary mt-2">Add Student</button>
                             </div>
 
                             <div class="col-md-6">
                                 <label for="">Choose Plan</label>
 
-                                @foreach ($plans as $ind=> $plan)
+                                @foreach ($plans as $ind => $plan)
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" id="plan{{ $plan->id }}" name="plan_id"
-                                            value="{{ $plan->id }}" {{ $ind==0 ?'checked':'' }}>
+                                        <input class="form-check-input" type="radio" id="plan{{ $plan->id }}"
+                                            data-price="{{ $plan->price }}" name="plan_id" value="{{ $plan->id }}"
+                                            {{ $ind == 0 ? 'checked' : '' }}>
                                         <label class="form-check-label" for="plan{{ $plan->id }}">
-                                            {{ $plan->description }}
+                                            {{ $plan->name }} <span>{{ $plan->price }}</span>
+                                            {{ config('app.currency_code') }}
                                         </label>
                                     </div>
                                 @endforeach
@@ -130,18 +136,7 @@
                             </div>
 
 
-                            <div class="col-md-6">
-                                <label for="">Starts From</label>
-                                <input type="date" name="starts_from" id="startDate" class="form-control"
-                                    placeholder="Starts From" required="" value="{{ old('grade') }}">
 
-                                @error('grade')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-
-                            </div>
 
                             <div class="col-md-6">
                                 <label for="">Payment Method</label>
@@ -170,6 +165,12 @@
                             </div>
 
 
+                            <div class="col-md-6">
+                                <br>
+                                <label for="">Total Price After discount: <b id="totalPrice"></b>
+                                    {{ config('app.currency_code') }}</label>
+                            </div>
+
                             <div class="col-md-6" id="receiptUpload" style="display: none;">
                                 <label for="">Upload Payment Receipt</label>
                                 <input type="file" name="payment_receipt" required class="form-control"
@@ -184,9 +185,10 @@
                             </div>
 
 
+
                             <div class="col-md-12 text-center">
 
-                                <button type="submit">Submit</button>
+                                <button type="submit" id="submitBtn">Submit</button>
                             </div>
 
                         </div>
@@ -199,6 +201,8 @@
     </section>
 @endsection
 @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     <script>
         function toggleReceiptField() {
             var bankTransfer = document.getElementById("bankTransfer");
@@ -212,31 +216,122 @@
         }
 
 
-        function getNextMonday(date) {
-            let day = date.getDay();
-            let diff = (day === 1) ? 0 : (day === 0 ? 1 : 8 - day); // Find next Monday
-            date.setDate(date.getDate() + diff);
-            return date;
+
+
+
+
+
+
+
+        function handleSubmit(event) {
+
+            let submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Submitting...';
+
         }
-
-        function restrictToMondays() {
-            const dateInput = document.getElementById("startDate");
-
-            let today = new Date();
-            let nextMonday = getNextMonday(new Date(today));
-
-            dateInput.min = nextMonday.toISOString().split("T")[0];
-            dateInput.step = "7"; // Allows selection only every 7 days (Mondays)
-        }
-
-
 
 
 
         window.onload = function() {
             toggleReceiptField();
-            restrictToMondays();
-
+            // restrictToMondays();
         };
+
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let maxChildren = 5;
+            let childIndex = 1; // Start from 1 since one child is already there
+
+            let basePrice = 0; // Adjust based on your logic
+
+            function updateBasePrice() {
+                let selectedPlan = document.querySelector('input[name="plan_id"]:checked');
+                basePrice = selectedPlan ? parseFloat(selectedPlan.getAttribute("data-price")) : 0;
+
+                updatePrice();
+            }
+
+
+            function updatePrice() {
+                let childrenCount = document.querySelectorAll(".child-entry").length;
+                let selectedPlan = document.querySelector('input[name="plan_id"]:checked');
+
+                let totalPrice = basePrice;
+                let discount = 0;
+
+
+
+                if (childrenCount > 1) {
+                    discount = totalPrice * 0.05 * childrenCount;
+                }
+
+                let discountedPrice = totalPrice - discount;
+                // basePrice=discountedPrice;
+
+                console.log('totalPrice', totalPrice)
+                console.log('discountedPrice', discountedPrice)
+
+                document.getElementById("totalPrice").innerText = discountedPrice.toFixed(2);
+                // document.getElementById("discountedPrice").value = discountedPrice.toFixed(2);
+            }
+
+            // Update price when plan selection changes
+            document.querySelectorAll('input[name="plan_id"]').forEach(plan => {
+                plan.addEventListener("change", updateBasePrice);
+
+            });
+
+            document.getElementById("addStdBtn").addEventListener("click", function() {
+                let container = document.getElementById("studentContainer");
+
+                if (childIndex < maxChildren) {
+                    let childHTML = `
+                    <div class="child-entry mt-3" id="child-${childIndex}">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" name="students[${childIndex}][name]" class="form-control" placeholder="Student Name" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" name="students[${childIndex}][class]" class="form-control" placeholder="Student Class" required>
+                            </div>
+                            <div class="col-md-3">
+                                <input type="file" name="students[${childIndex}][image]" class="form-control" required>
+                            </div>
+                            <div class="col-md-1">
+                                <button type="button" class="btn btn-danger removeChildBtn" data-index="${childIndex}">X</button>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    container.insertAdjacentHTML("beforeend", childHTML);
+                    childIndex++;
+                    updatePrice();
+                } else {
+                    alert("You can only add up to 5 children.");
+                }
+            });
+
+            document.getElementById("studentContainer").addEventListener("click", function(event) {
+                if (event.target.classList.contains("removeChildBtn")) {
+                    let index = event.target.getAttribute("data-index");
+                    document.getElementById(`child-${index}`).remove();
+                    childIndex--;
+                    updatePrice();
+                }
+            });
+            updateBasePrice();
+
+            flatpickr("#startDate", {
+                minDate: "today", // Disable past dates
+                dateFormat: "Y-m-d", // Format date as YYYY-MM-DD
+                disable: [
+                    function(date) {
+                        return date.getDay() !== 1; // Disable all days except Monday (1)
+                    }
+                ]
+            });
+
+        });
     </script>
 @endpush

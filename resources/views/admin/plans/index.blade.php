@@ -37,7 +37,7 @@
                                 <th>Name</th>
                                 <th>Days</th>
                                 <th>Price</th>
-                                <th>Description</th>
+                                {{-- <th>Description</th> --}}
                                 <th>Created At</th>
                                 <th>Updated At</th>
                                 <th>Action</th>
@@ -55,7 +55,7 @@
                                     <td>{{ $plan->name }}</td>
                                     <td>{{ $plan->days }}</td>
                                     <td>{{ $plan->price }}</td>
-                                    <td>{{ $plan->description }}</td>
+                                    {{-- <td>{{ $plan->description }}</td> --}}
 
                                     <td>{{ $plan->created_at }}</td>
                                     <td>{{ $plan->updated_at }}</td>

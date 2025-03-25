@@ -84,20 +84,6 @@
                                 @enderror
                             </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
-                                <?php
-                                $value = old('description', $plan ? $plan->description : null);
-
-                                ?>
-                                <label class="form-label" for="label"> Description <span class="text-danger">*</span></label>
-                                <input required type="text" value="{{ $value }}" class="form-control"
-                                    id="description" name="description" placeholder="Enter description">
-                                @error('description')
-                                    <span class="text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
 
 
 

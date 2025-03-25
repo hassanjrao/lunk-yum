@@ -38,7 +38,7 @@ class AdminPlanController extends Controller
             'name' => 'required',
             'days'=>'required|integer',
             'price'=>'required|numeric',
-            'description'=>'required'
+            'description'=>'nullable'
         ]);
 
         Plan::create([
@@ -91,7 +91,7 @@ class AdminPlanController extends Controller
             'name' => 'required',
             'days'=>'required|integer',
             'price'=>'required|numeric',
-            'description'=>'required'
+            'description'=>'nullable'
         ]);
 
         $plan->update([

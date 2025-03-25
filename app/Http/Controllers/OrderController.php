@@ -91,14 +91,14 @@ class OrderController extends Controller
         }
 
         try {
-            // $user->notify(new OrderNotification($user));
+            $user->notify(new OrderNotification($user));
 
 
-            // $admin = User::whereHas('roles', function ($q) {
-            //     $q->where('name', 'admin');
-            // })->first();
+            $admin = User::whereHas('roles', function ($q) {
+                $q->where('name', 'admin');
+            })->first();
 
-            // $admin->notify(new AdminOrderNotification($user));
+            $admin->notify(new AdminOrderNotification($user));
         } catch (Exception $e) {
             Log::info('EmailOrderError', [
                 'message' => $e->getMessage(),

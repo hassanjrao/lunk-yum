@@ -53,7 +53,7 @@
                     <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#about' : route('landing') . '#about' }}">About</a></li>
                     <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#menu' : route('landing') . '#menu' }}">Menu</a></li>
                     <li><a class="{{ request()->is('dietary-needs') ? ' active' : '' }}" href="{{ route('dietary-needs') }}">Dietary Needs</a></li>
-                    <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="#contactss">Corporate Clients</a></li>
+                    <li><a class="{{ request()->is('corporate-clients') ? ' active' : '' }}" href="{{ route('corporate-clients') }}">Corporate Clients</a></li>
                     <li><a class="{{ request()->is('faqs') ? ' active' : '' }}" href="{{ route('faqs') }}">FAQs</a></li>
                     <li><a class="{{ request()->is('/*') ? ' active' : '' }}" href="{{ request()->is('/') ? '#contact' : route('landing') . '#contact' }}">Contact</a></li>
                 </ul>

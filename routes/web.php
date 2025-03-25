@@ -32,6 +32,9 @@ Auth::routes();
 Route::get('dietary-needs',[FrontController::class,'dietaryNeeds'])->name('dietary-needs');
 
 Route::get('faqs',[FrontController::class,'faqs'])->name('faqs');
+Route::get('corporate-clients',[FrontController::class,'corporateClients'])->name('corporate-clients');
+Route::get('corporate-clients',[FrontController::class,'corporateClients'])->name('corporate-clients');
+Route::post('corporate-clients',[FrontController::class,'corporateClientsStore'])->name('corporate-clients.store');
 Route::get('order',[OrderController::class, 'index'])->name('order.index');
 Route::get('thank-you',[OrderController::class,'thankyou'])->name('order.thankyou');
 Route::post('order',[OrderController::class, 'store'])->name('order.store');

@@ -22,15 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'school_id',
-        'student_name',
-        'student_grade',
-        'student_id_image',
-        'starts_from',
-        'ends_at',
-        'payment_method',
-        'payment_receipt',
-        'plan_id'
+        'relation'
     ];
 
     /**

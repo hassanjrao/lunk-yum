@@ -46,6 +46,48 @@
                                 @enderror
                             </div>
 
+
+                            <div class="col-md-6">
+                                <label for="">Relation</label>
+                                <br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="parent" name="relation"
+                                        value="parent" checked>
+                                    <label class="form-check-label" for="parent">
+                                        Parent
+                                    </label>
+                                </div>
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="guardian" name="relation"
+                                        value="guardian">
+                                    <label class="form-check-label" for="guardian">
+                                        Guardian
+                                    </label>
+                                </div>
+
+
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" id="relative" name="relation"
+                                        value="relative">
+                                    <label class="form-check-label" for="relative">
+                                        Relative
+                                    </label>
+                                </div>
+
+
+                                @error('relation')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+
+                            </div>
+
+                            <div class="col-md-6">
+                            </div>
+
+
                             <div class="col-md-6">
 
                                 @php
@@ -73,7 +115,7 @@
                                 <label for="">Starts From</label>
                                 <input type="date" name="starts_from" id="startDate" class="form-control"
                                     placeholder="Starts From" required="" value="{{ old('grade') }}">
-
+                                <i>* Service will begin the following Monday.</i>
                                 @error('grade')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>

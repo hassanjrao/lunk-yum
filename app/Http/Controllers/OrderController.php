@@ -34,6 +34,7 @@ class OrderController extends Controller
             'payment_method' => ['required', 'string', 'max:255'],
             'payment_receipt' => ['required', 'file', 'image', 'max:2048'],
             'students'=>'required|array',
+            'relation'=>'required'
 
         ]);
 
@@ -62,6 +63,7 @@ class OrderController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->name . '1234'),
+            'relation'=>$request->relation
         ]);
 
         $user->assignRole('user');

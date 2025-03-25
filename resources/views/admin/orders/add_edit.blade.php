@@ -18,10 +18,7 @@
 
                 <div class="row push justify-content-center">
                     <div class="row mb-3">
-                        <div class="col-md-4">
-                            <label class="form-label">Order ID</label>
-                            <input type="text" class="form-control" value="{{ $order->order_id }}" disabled>
-                        </div>
+
                         <div class="col-md-4">
                             <label class="form-label">User</label>
                             <input type="text" class="form-control" value="{{ $order->user->name }}" disabled>
@@ -29,6 +26,10 @@
                         <div class="col-md-4">
                             <label class="form-label">User Email</label>
                             <input type="text" class="form-control" value="{{ $order->user->email }}" disabled>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">User Relation</label>
+                            <input type="text" class="form-control" value="{{ $order->user->relation }}" disabled>
                         </div>
                     </div>
 

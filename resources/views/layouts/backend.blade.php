@@ -219,6 +219,14 @@
                             </a>
                         </li>
 
+                        <li class="nav-main-item">
+                            <a class="nav-main-link {{ request()->is('admin/corporate-enquiry-requests*') ? ' active' : '' }}"
+                                href="{{ route('admin.corporate-enquiry-requests.index') }}">
+                                <i class="nav-main-link-icon si si-cursor"></i>
+                                <span class="nav-main-link-name">Corporate Enquiry Requests</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </div>

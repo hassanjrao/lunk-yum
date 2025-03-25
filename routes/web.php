@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminContactUsController;
+use App\Http\Controllers\AdminCorporateEnquiryRequestController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\AdminMenuController;
 use App\Http\Controllers\AdminOrderController;
@@ -58,4 +59,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () 
     Route::resource('plans',AdminPlanController::class);
 
     Route::resource('orders',AdminOrderController::class);
+
+    Route::resource('corporate-enquiry-requests',AdminCorporateEnquiryRequestController::class);
 });

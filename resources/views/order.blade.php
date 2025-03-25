@@ -228,6 +228,29 @@
 
 
 
+
+                            <div class="col-md-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="certifyParent" name="certifyParent" required>
+                                    <label class="form-check-label" for="certifyParent">
+                                        By submitting this form, I certify that I am the parent or legal guardian of the student receiving this lunch delivery,
+                                        or that I have obtained explicit permission from the student’s parent or legal guardian to place this order. I understand
+                                        that false or misleading information may result in the cancellation of the order and can have legal repercussions.
+                                    </label>
+                                </div>
+
+                                <div class="form-check mt-2">
+                                    <input class="form-check-input" type="checkbox" id="certifyDietary" name="certifyDietary" required>
+                                    <label class="form-check-label" for="certifyDietary">
+                                        By submitting this form, I certify that I have read and understand the 'Dietary Needs' section of the website.
+                                        I acknowledge that Yum4Kids does not accommodate food allergies and that cross-contamination is possible.
+                                        I accept full responsibility for determining whether the menu items are suitable for the intended recipient's dietary needs.
+                                    </label>
+                                </div>
+
+                            </div>
+
+
                             <div class="col-md-12 text-center">
 
                                 <button type="submit" id="submitBtn">Submit</button>

@@ -70,7 +70,7 @@
                             hassle-free lunch. Our mission is to provide <b>fresh, balanced, and hygienically prepared
                                 meals</b> that fuel students throughout their busy school day. With a focus on <b>quality
                                 ingredients, variety, and convenience</b>, we take the stress out of packing lunches for
-                            parents while ensuring kids enjoy meals they love. Our expert chefs craft wholesome,
+                            parents while ensuring kids enjoy meals they love. We have crafted wholesome,
                             kid-approved menus that cater to different dietary needs, all delivered safely and on time to
                             schools. With <b>Yum4Kids, lunchtime is easy, healthy, and worry-free!</b>
 

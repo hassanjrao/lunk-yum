@@ -105,7 +105,7 @@ class OrderController extends Controller
         }
 
 
-        return redirect()->route('order.index')->withToastSuccess('Order created successfully, please check your email');
+        return redirect()->route('order.thankyou')->withToastSuccess('Order created successfully, please check your email');
     }
 
     public function thankyou(){

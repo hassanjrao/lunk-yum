@@ -371,7 +371,9 @@
 
 
     <!-- Page JS Code -->
-    <script src="{{ asset('js/pages/tables_datatables.js') }}"></script>
+    {{-- <script src="{{ asset('js/pages/tables_datatables.js') }}"></script> --}}
+
+    <script src="{{ asset('js/pages/be_tables_datatables.min.js')}}"></script>
 
 
     <script src="{{ asset('js/plugins/select2/js/select2.full.min.js') }}"></script>

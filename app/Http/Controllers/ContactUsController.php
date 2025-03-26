@@ -15,12 +15,14 @@ class ContactUsController extends Controller
         $request->validate([
             'name'=>'required',
             'email'=>'required',
+            'phone'=>'required',
             'message'=>'required'
         ]);
 
        $contactUs= ContactUs::create([
             'name'=>$request->name,
             'email'=>$request->email,
+            'phone'=>$request->phone,
             'message'=>$request->message
         ]);
 

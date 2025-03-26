@@ -36,6 +36,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Phone</th>
                                 <th>Message</th>
                                 <th>Created At</th>
                                 <th>Action</th>
@@ -52,6 +53,8 @@
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $contact->name }}</td>
                                     <td>{{ $contact->email }}</td>
+                                    <td>{{ $contact->phone }}</td>
+
                                     <td>{{ $contact->message }}</td>
 
                                     <td>{{ $contact->created_at }}</td>

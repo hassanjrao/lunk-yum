@@ -45,6 +45,7 @@ class ContactUsNotification extends Notification
                     ->subject('Contact Us Request')
                     ->line('Name: '.$this->contactUs->name)
                     ->line('Email: '.$this->contactUs->email)
+                    ->line('Phone: '.$this->contactUs->phone)
                     ->line('Message: '.$this->contactUs->message);
     }
 

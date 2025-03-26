@@ -430,13 +430,18 @@
                 @csrf
                 <div class="row gy-4">
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <input type="text" name="name" class="form-control" placeholder="Your Name"
                             required="">
                     </div>
 
-                    <div class="col-md-6 ">
+                    <div class="col-md-4 ">
                         <input type="email" class="form-control" name="email" placeholder="Your Email"
+                            required="">
+                    </div>
+
+                    <div class="col-md-4 ">
+                        <input type="text" class="form-control" name="phone" placeholder="Your Phone Number"
                             required="">
                     </div>
 

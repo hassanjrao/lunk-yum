@@ -9,8 +9,8 @@
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    {{-- <link href="{{ asset('front-assets/img/favicon.png')}}" rel="icon">
-    <link href="{{ asset('front-assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon"> --}}
+    <link href="{{ asset('front-assets/img/logo.png')}}" rel="icon">
+    <link href="{{ asset('front-assets/img/logo.png')}}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -42,7 +42,7 @@
 
             <a href="{{ route('landing') }}" class="logo d-flex align-items-center me-auto me-xl-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <!-- <img src="{{ asset('front-assets/img/logo.png')}}" alt=""> -->
+                <img src="{{ asset('front-assets/img/logo.png')}}" alt="">
                 <h1 class="sitename">{{ config('app.name') }}</h1>
                 <span>.</span>
             </a>

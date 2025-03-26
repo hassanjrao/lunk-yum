@@ -15,6 +15,7 @@
         <div class="container section-title aos-init aos-animate" data-aos="fade-up" style="padding-bottom: 0px">
             <p><span></span> <span class="description-title">Corporate Clients
                 </span></p>
+                <img src="{{ asset('front-assets/img/logo_corp.png')}}" alt="" width="200px" height="200px">
         </div>
         <br>
         <div class="container mt-5">

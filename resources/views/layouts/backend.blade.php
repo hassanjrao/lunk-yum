@@ -360,9 +360,9 @@
     <script src="{{ asset('js/oneui.app.js') }}"></script>
 
     <!-- Laravel Scaffolding JS -->
-    <!-- <script src="{{ asset('/js/laravel.app.js') }}"></script> -->
+     <script src="{{ asset('/js/laravel.app.js') }}"></script>
 
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
     <script src="{{ asset('js/lib/jquery.min.js') }}"></script>
 

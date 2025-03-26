@@ -83,5 +83,11 @@ class AdminContactUsController extends Controller
      */
     public function destroy($id)
     {
+
+        $cont=ContactUs::findorfail($id);
+
+        $cont->delete();
+
+        return redirect()->route('admin.contact-us.index')->withToastSuccess('Deleted successfully');
     }
 }

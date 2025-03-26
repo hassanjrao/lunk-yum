@@ -42,7 +42,7 @@
                                 <th>Meal Subscription</th>
                                 <th>Special Request</th>
                                 <th>Created At</th>
-                                {{-- <th>Action</th> --}}
+                                <th>Action</th>
 
                             </tr>
 
@@ -63,6 +63,18 @@
                                     <td>{{ $request->special_request }}</td>
 
                                     <td>{{ $request->created_at }}</td>
+                                    <td>
+                                        <form id="form-{{ $request->id }}"
+                                            action="{{ route('admin.corporate-enquiry-requests.destroy', $request->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="button" onclick="confirmDelete({{ $request->id }})"
+                                                class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+
+                                        </form>
+                                    </td>
 
 
                                 </tr>

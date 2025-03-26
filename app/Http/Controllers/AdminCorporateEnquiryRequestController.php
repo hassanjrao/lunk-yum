@@ -82,6 +82,11 @@ class AdminCorporateEnquiryRequestController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $cont=CorporateEnquiry::findorfail($id);
+
+        $cont->delete();
+
+        return redirect()->route('admin.corporate-enquiry-requests.index')->withToastSuccess('Deleted successfully');
     }
 }

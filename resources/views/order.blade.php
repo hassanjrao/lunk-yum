@@ -14,7 +14,7 @@
         </div>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <form action="{{ route('order.store') }}" method="post" class="site-form aos-init aos-animate"
                         enctype="multipart/form-data" data-aos="fade-up" data-aos-delay="600" id="orderForm"
                         onsubmit="handleSubmit(event)">
@@ -143,7 +143,7 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="">Student ID</label>
-                                                <input type="file" name="students[0][image]" class="form-control"
+                                                <input type="file" accept="image/*" name="students[0][image]" class="form-control"
                                                     required>
                                             </div>
                                         </div>
@@ -194,7 +194,7 @@
                                     <input class="form-check-input" type="radio" onclick="toggleReceiptField()"
                                         disabled name="payment_method" id="radio2" value="card">
                                     <label class="form-check-label" for="radio2">
-                                        Card
+                                        Card (<i>Credit Cards and Easy Paisa coming soon</i>)
                                     </label>
                                 </div>
 
@@ -216,6 +216,7 @@
                             <div class="col-md-6" id="receiptUpload" style="display: none;">
                                 <label for="">Upload Payment Receipt</label>
                                 <input type="file" name="payment_receipt" required class="form-control"
+                                accept="image/*"
                                     placeholder="Upload Payment Receipt">
 
                                 @error('payment_receipt')
@@ -328,7 +329,7 @@
 
 
                 if (childrenCount > 1) {
-                    discount = totalPrice * 0.05 * childrenCount;
+                    discount = totalPrice * 0.05 * (childrenCount-1);
                 }
 
                 let discountedPrice = totalPrice - discount;
@@ -361,10 +362,10 @@
                                 <input type="text" name="students[${childIndex}][class]" class="form-control" placeholder="Student Class" required>
                             </div>
                             <div class="col-md-3">
-                                <input type="file" name="students[${childIndex}][image]" class="form-control" required>
+                                <input type="file" name="students[${childIndex}][image]" accept="image/*" class="form-control" required>
                             </div>
                             <div class="col-md-1">
-                                <button type="button" class="btn btn-danger removeChildBtn" data-index="${childIndex}">X</button>
+                                <button type="button" class="btn btn-sm btn-danger removeChildBtn" data-index="${childIndex}">X</button>
                             </div>
                         </div>
                     </div>`;

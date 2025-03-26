@@ -37,7 +37,7 @@
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Created At</th>
-                                {{-- <th>Action</th> --}}
+                                <th>Action</th>
 
                             </tr>
 
@@ -53,7 +53,19 @@
                                     <td>{{ $user->email }}</td>
 
                                     <td>{{ $user->created_at }}</td>
+                                    <td>
 
+                                        <form id="form-{{ $user->id }}"
+                                            action="{{ route('admin.users.destroy', $user->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="button" onclick="confirmDelete({{ $user->id }})" class="btn btn-sm btn-danger" data-toggle="tooltip"
+                                                title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+
+                                        </form>
+                                    </td>
 
                                 </tr>
                             @endforeach

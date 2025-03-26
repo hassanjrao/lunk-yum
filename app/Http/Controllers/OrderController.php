@@ -50,7 +50,7 @@ class OrderController extends Controller
 
         if(count($students)>1){
             $discountPercentage=5;
-            $discount = $totalPrice * ($discountPercentage/100) * count($students);
+            $discount = $totalPrice * ($discountPercentage/100) * (count($students)-1);
         }
 
         $totalPriceAfterDiscount=$totalPrice-$discount;

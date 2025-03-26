@@ -84,6 +84,17 @@
                                             data-toggle="tooltip" title="Edit">
                                             <i class="fa fa-eye"></i>
                                         </a>
+
+                                        <form id="form-{{ $order->id }}"
+                                            action="{{ route('admin.orders.destroy', $order->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="button" onclick="confirmDelete({{ $order->id }})" class="btn btn-sm btn-danger" data-toggle="tooltip"
+                                                title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

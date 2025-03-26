@@ -38,7 +38,7 @@
                                 <th>Email</th>
                                 <th>Message</th>
                                 <th>Created At</th>
-                                {{-- <th>Action</th> --}}
+                                <th>Action</th>
 
                             </tr>
 
@@ -55,6 +55,19 @@
                                     <td>{{ $contact->message }}</td>
 
                                     <td>{{ $contact->created_at }}</td>
+
+                                    <td>
+                                        <form id="form-{{ $contact->id }}"
+                                            action="{{ route('admin.contact-us.destroy', $contact->id) }}" method="POST">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="button" onclick="confirmDelete({{ $contact->id }})"
+                                                class="btn btn-sm btn-danger" data-toggle="tooltip" title="Delete">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+
+                                        </form>
+                                    </td>
 
 
                                 </tr>

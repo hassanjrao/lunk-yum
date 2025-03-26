@@ -82,6 +82,10 @@ class AdminUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user=User::findorfail($id);
+
+        $user->delete();
+
+        return redirect()->route('admin.users.index')->withToastSuccess('Deleted successfully');
     }
 }

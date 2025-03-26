@@ -69,8 +69,6 @@ class OrderController extends Controller
 
         $finalPrice=$basePrice*count($students);
 
-        dd($totalPriceAfterDiscount, $totalPrice, $basePrice,$finalPrice);
-
 
 
         $user = User::updateOrCreate([

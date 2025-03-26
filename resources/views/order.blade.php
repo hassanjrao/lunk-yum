@@ -22,7 +22,7 @@
 
                         <div class="row gy-4">
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <label for="">Your Name</label>
                                 <input type="text" name="name" class="form-control" placeholder="Your Name"
                                     required="" value="{{ old('name') }}">
@@ -35,11 +35,22 @@
 
                             </div>
 
-                            <div class="col-md-6 ">
+                            <div class="col-md-4 ">
                                 <label for="">Your Email</label>
                                 <input type="email" class="form-control" name="email" placeholder="Your Email"
                                     value="{{ old('email') }}" required="">
                                 @error('email')
+                                    <span class="text-danger" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-4 ">
+                                <label for="">Your Cell Phone</label>
+                                <input type="tel" class="form-control" name="phone" placeholder="Your Cell Phone"
+                                    value="{{ old('phone') }}" required="">
+                                @error('phone')
                                     <span class="text-danger" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

@@ -36,6 +36,7 @@
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>Phone</th>
                                 <th>Created At</th>
                                 <th>Action</th>
 
@@ -51,6 +52,7 @@
                                     <td>{{ $ind + 1 }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td>{{ $user->phone }}</td>
 
                                     <td>{{ $user->created_at }}</td>
                                     <td>

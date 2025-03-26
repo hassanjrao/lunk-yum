@@ -37,6 +37,7 @@
                                 <th>Order Id</th>
                                 <th>User Name</th>
                                 <th>User Email</th>
+                                <th>User Phone</th>
                                 <th>Relation</th>
                                 <th>Plan</th>
                                 <th>School</th>
@@ -64,6 +65,7 @@
                                     <th>{{ $order->order_id }}</th>
                                     <td>{{ $order->user->name }}</td>
                                     <td>{{ $order->user->email }}</td>
+                                    <td>{{ $order->user->phone }}</td>
                                     <td>{{ $order->user->relation }}</td>
                                     <td>{{ $order->plan->name }}</td>
                                     <td>{{ $order->school->name }}</td>

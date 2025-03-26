@@ -79,7 +79,7 @@
         <p><strong>Order Number:</strong> {{ $order->order_id }}</p>
         <p><strong>Meal Plan:</strong> {{ $order->plan->name . ' - ' . $order->plan->price . ' ' . config('app.currency_code') }}</p>
         <p><strong>Start Date:</strong> {{ $order->starts_from }}</p>
-        <p><strong>Total Amount:</strong> {{ $order->total_price_after_discount }}</p>
+        <p><strong>Total Amount:</strong> {{ $order->total_price_after_discount .' '.config('app.currency_code') }}</p>
 
         <h3>Student Information</h3>
         <table>

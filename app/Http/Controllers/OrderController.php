@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\StudentLunchOrderMail;
 use App\Models\Order;
 use App\Models\OrderDetail;
 use App\Models\Plan;
@@ -12,6 +13,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class OrderController extends Controller
 {
@@ -121,7 +123,8 @@ class OrderController extends Controller
 
         try {
 
-            $user->notify(new OrderNotification($user));
+            Mail::to($user->email)->send(new StudentLunchOrderMail($order));
+
         } catch (Exception $e) {
             Log::info('EmailOrderErrorUser', [
                 'message' => $e->getMessage(),

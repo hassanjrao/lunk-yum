@@ -42,6 +42,7 @@ class OrderNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->greeting('Dear '.$this->user->name)
                     ->subject("We've received your order")
                     ->line('We have received your order and we are verifying the payment.')
                     ->line('Thank you for your order')

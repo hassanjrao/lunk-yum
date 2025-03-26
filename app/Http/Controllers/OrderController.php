@@ -67,7 +67,7 @@ class OrderController extends Controller
 
         $totalPriceAfterDiscount = $totalPrice - $discount;
 
-        $finalPrice=$basePrice*count($students);
+        $finalPrice = $basePrice * count($students);
 
 
 
@@ -76,7 +76,7 @@ class OrderController extends Controller
         ], [
             'name' => $request->name,
             'email' => $request->email,
-            'phone'=>$request->phone,
+            'phone' => $request->phone,
             'password' => Hash::make($request->name . '1234'),
             'relation' => $request->relation
         ]);
@@ -106,8 +106,6 @@ class OrderController extends Controller
         }
 
         try {
-            $user->notify(new OrderNotification($user));
-
 
             $admin = User::whereHas('roles', function ($q) {
                 $q->where('name', 'admin');
@@ -115,7 +113,17 @@ class OrderController extends Controller
 
             $admin->notify(new AdminOrderNotification($user));
         } catch (Exception $e) {
-            Log::info('EmailOrderError', [
+            Log::info('EmailOrderErrorAdmin', [
+                'message' => $e->getMessage(),
+                'stack' => $e->getTraceAsString()
+            ]);
+        }
+
+        try {
+
+            $user->notify(new OrderNotification($user));
+        } catch (Exception $e) {
+            Log::info('EmailOrderErrorUser', [
                 'message' => $e->getMessage(),
                 'stack' => $e->getTraceAsString()
             ]);

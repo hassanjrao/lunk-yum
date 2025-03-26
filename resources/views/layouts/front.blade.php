@@ -42,7 +42,7 @@
 
             <a href="{{ route('landing') }}" class="logo d-flex align-items-center me-auto me-xl-0">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <img src="{{ asset('front-assets/img/logo.png')}}" alt="" style="max-height: 150px; width:150%">
+                <img src="{{ asset('front-assets/img/logo.png')}}" alt="" style="max-height: 180px; width:241px">
                 {{-- <h1 class="sitename">{{ config('app.name') }}</h1> --}}
                 {{-- <span>.</span> --}}
             </a>

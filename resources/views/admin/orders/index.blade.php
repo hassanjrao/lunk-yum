@@ -41,6 +41,7 @@
                                 <th>Plan</th>
                                 <th>School</th>
                                 <th>Total Students</th>
+                                <th>Students</th>
                                 <th>Payment Method</th>
                                 <th>Payment Receipt</th>
                                 <th>Starts From</th>
@@ -67,6 +68,13 @@
                                     <td>{{ $order->plan->name }}</td>
                                     <td>{{ $order->school->name }}</td>
                                     <td>{{ $order->orderDetails->count() }}</td>
+
+                                    <td>
+                                        @foreach ($order->orderDetails as $std)
+                                        <p>Name: {{ $std->student_name }} <br> Class: {{ $std->student_class }}</p>
+                                        <hr>
+                                        @endforeach
+                                    </td>
                                     <td>{{ $order->payment_method }}</td>
                                     <td>
                                         <img src="{{ $order->payment_receipt_url }}" width="100px" height="100px">

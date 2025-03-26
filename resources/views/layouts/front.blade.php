@@ -83,7 +83,7 @@
                     <div>
                         <h4>Contact</h4>
                         <p>
-                            <strong>Phone:</strong> <span>0330 3038184</span><br>
+                            <strong>Whatsapp:</strong> <span>0330 3038184</span><br>
                             <strong>Email:</strong> <span>sales@Yum4Kids.pk</span><br>
                         </p>
                     </div>
@@ -103,7 +103,6 @@
                 <div class="col-lg-4 col-md-6">
                     <h4>Follow Us</h4>
                     <div class="social-links d-flex">
-                        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
                         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
                         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
                         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>

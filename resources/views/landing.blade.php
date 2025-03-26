@@ -394,9 +394,9 @@
 
                 <div class="col-md-4">
                     <div class="info-item d-flex align-items-center" data-aos="fade-up" data-aos-delay="300">
-                        <i class="icon bi bi-telephone flex-shrink-0"></i>
+                        <i class="icon bi bi-whatsapp flex-shrink-0"></i>
                         <div>
-                            <h3>Call Us</h3>
+                            <h3>Whatsapp</h3>
                             <p>0330 3038184</p>
                         </div>
                     </div>

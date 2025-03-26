@@ -327,9 +327,9 @@
                 let discount = 0;
 
 
-
                 if (childrenCount > 1) {
-                    discount = totalPrice * 0.05 * (childrenCount-1);
+                    totalPrice=totalPrice*childrenCount
+                    discount = totalPrice * 0.05 * (1);
                 }
 
                 let discountedPrice = totalPrice - discount;

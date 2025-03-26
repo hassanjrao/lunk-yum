@@ -105,7 +105,7 @@
         <ul>
             <li><strong>Payment Verification:</strong> Our team will review and verify your payment. Once confirmed, you
                 will receive a <b>final confirmation email</b>, and your child’s meal service will begin as scheduled.</li>
-            <li><strong>Start Date:</strong> Once payment is confirmed, deliveries will begin on {{ $order->starts_from }},
+            <li><strong>Start Date:</strong> Once payment is confirmed, deliveries will begin on <b>{{ $order->starts_from }}</b>,
                 Monday-Friday, as per your selected plan.</li>
         </ul>
 

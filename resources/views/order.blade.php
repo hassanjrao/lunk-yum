@@ -143,8 +143,8 @@
                                             </div>
                                             <div class="col-md-4">
                                                 <label for="">Student ID</label>
-                                                <input type="file" accept="image/*" name="students[0][image]" class="form-control"
-                                                    required>
+                                                <input type="file" accept="image/*" name="students[0][image]"
+                                                    class="form-control" required>
                                             </div>
                                         </div>
                                     </div>
@@ -216,8 +216,7 @@
                             <div class="col-md-6" id="receiptUpload" style="display: none;">
                                 <label for="">Upload Payment Receipt</label>
                                 <input type="file" name="payment_receipt" required class="form-control"
-                                accept="image/*"
-                                    placeholder="Upload Payment Receipt">
+                                    accept="image/*" placeholder="Upload Payment Receipt">
 
                                 @error('payment_receipt')
                                     <span class="text-danger" role="alert">
@@ -232,20 +231,28 @@
 
                             <div class="col-md-12">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="certifyParent" name="certifyParent" required>
+                                    <input class="form-check-input" type="checkbox" id="certifyParent"
+                                        name="certifyParent" required>
                                     <label class="form-check-label" for="certifyParent">
-                                        By submitting this form, I certify that I am the parent or legal guardian of the student receiving this lunch delivery,
-                                        or that I have obtained explicit permission from the student’s parent or legal guardian to place this order. I understand
-                                        that false or misleading information may result in the cancellation of the order and can have legal repercussions.
+                                        By submitting this form, I certify that I am the parent or legal guardian of the
+                                        student receiving this lunch delivery,
+                                        or that I have obtained explicit permission from the student’s parent or legal
+                                        guardian to place this order. I understand
+                                        that false or misleading information may result in the cancellation of the order and
+                                        can have legal repercussions.
                                     </label>
                                 </div>
 
                                 <div class="form-check mt-2">
-                                    <input class="form-check-input" type="checkbox" id="certifyDietary" name="certifyDietary" required>
+                                    <input class="form-check-input" type="checkbox" id="certifyDietary"
+                                        name="certifyDietary" required>
                                     <label class="form-check-label" for="certifyDietary">
-                                        By submitting this form, I certify that I have read and understand the 'Dietary Needs' section of the website.
-                                        I acknowledge that Yum4Kids does not accommodate food allergies and that cross-contamination is possible.
-                                        I accept full responsibility for determining whether the menu items are suitable for the intended recipient's dietary needs.
+                                        By submitting this form, I certify that I have read and understand the 'Dietary
+                                        Needs' section of the website.
+                                        I acknowledge that Yum4Kids does not accommodate food allergies and that
+                                        cross-contamination is possible.
+                                        I accept full responsibility for determining whether the menu items are suitable for
+                                        the intended recipient's dietary needs.
                                     </label>
                                 </div>
 
@@ -311,11 +318,21 @@
 
             let basePrice = 0; // Adjust based on your logic
 
+            let totalPrice = 0;
+
             function updateBasePrice() {
                 let selectedPlan = document.querySelector('input[name="plan_id"]:checked');
                 basePrice = selectedPlan ? parseFloat(selectedPlan.getAttribute("data-price")) : 0;
+                totalPrice = basePrice;
 
                 updatePrice();
+            }
+
+            function getBasePrice() {
+                let selectedPlan = document.querySelector('input[name="plan_id"]:checked');
+
+                return selectedPlan ? parseFloat(selectedPlan.getAttribute("data-price")) : 0;
+
             }
 
 
@@ -323,17 +340,21 @@
                 let childrenCount = document.querySelectorAll(".child-entry").length;
                 let selectedPlan = document.querySelector('input[name="plan_id"]:checked');
 
-                let totalPrice = basePrice;
                 let discount = 0;
 
+                console.log('basePirce',basePrice)
 
-                if (childrenCount > 1) {
-                    totalPrice=totalPrice*childrenCount
-                    discount = totalPrice * 0.05 * (1);
+                let totalPrice=basePrice;
+
+                for (i = 0; i < childrenCount; i++) {
+                    if (i >= 1) {
+                        let basPrice = basePrice - (basePrice * 0.05);
+                        console.log('basPrice',basPrice);
+                        totalPrice += basPrice
+                    }
+
                 }
-
                 let discountedPrice = totalPrice - discount;
-                // basePrice=discountedPrice;
 
                 console.log('totalPrice', totalPrice)
                 console.log('discountedPrice', discountedPrice)

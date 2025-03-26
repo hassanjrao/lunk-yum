@@ -17,8 +17,8 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $plans=Plan::all();
-        return view('order',compact('plans'));
+        $plans = Plan::all();
+        return view('order', compact('plans'));
     }
 
 
@@ -33,62 +33,76 @@ class OrderController extends Controller
             'starts_from' => ['required', 'date'],
             'payment_method' => ['required', 'string', 'max:255'],
             'payment_receipt' => ['required', 'file', 'image', 'max:2048'],
-            'students'=>'required|array',
-            'relation'=>'required'
+            'students' => 'required|array',
+            'relation' => 'required'
 
         ]);
 
-        $students=$request->students;
+        $students = $request->students;
 
-        $totalPrice=0;
+        $finalPrice = 0;
 
-        $plan=Plan::findorfail($request->plan_id);
+        $plan = Plan::findorfail($request->plan_id);
 
-        $totalPrice=floatval($plan->price);
-        $discount=0;
-        $discountPercentage=0;
+        $basePrice = floatval($plan->price);
 
-        if(count($students)>1){
-            $discountPercentage=5;
+        $totalPrice = $basePrice;
 
-            $totalPrice=$totalPrice*count($students);
-            $discount = $totalPrice * ($discountPercentage/100) * (1);
+
+        $discount = 0;
+        $discountPercentage = 0;
+
+        if (count($students) > 1) {
+            $discountPercentage = 5;
+
+
+            foreach ($students as $ind => $std) {
+
+                if ($ind >= 1) {
+                    $bPrice = $basePrice - ($basePrice * 0.05);
+                    $totalPrice += $bPrice;
+                }
+            }
         }
 
-        $totalPriceAfterDiscount=$totalPrice-$discount;
+        $totalPriceAfterDiscount = $totalPrice - $discount;
+
+        $finalPrice=$basePrice*count($students);
+
+        dd($totalPriceAfterDiscount, $totalPrice, $basePrice,$finalPrice);
 
 
 
         $user = User::updateOrCreate([
-            'email'=>$request->email
-        ],[
+            'email' => $request->email
+        ], [
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->name . '1234'),
-            'relation'=>$request->relation
+            'relation' => $request->relation
         ]);
 
         $user->assignRole('user');
 
-        $order=Order::create([
-            'user_id'=>$user->id,
-            'plan_id'=>$request->plan_id,
-            'school_id'=>$request->school_id,
-            'payment_method'=>$request->payment_method,
-            'payment_receipt'=>$request->payment_receipt->store('payment_receipts'),
-            'starts_from'=>$request->starts_from,
-            'ends_at'=>$request->starts_from,
-            'discount_percentage'=>$discountPercentage,
-            'total_price'=>$totalPrice,
-            'total_price_after_discount'=>$totalPriceAfterDiscount
+        $order = Order::create([
+            'user_id' => $user->id,
+            'plan_id' => $request->plan_id,
+            'school_id' => $request->school_id,
+            'payment_method' => $request->payment_method,
+            'payment_receipt' => $request->payment_receipt->store('payment_receipts'),
+            'starts_from' => $request->starts_from,
+            'ends_at' => $request->starts_from,
+            'discount_percentage' => $discountPercentage,
+            'total_price' => $finalPrice,
+            'total_price_after_discount' => $totalPriceAfterDiscount
         ]);
 
-        foreach($students as $student){
+        foreach ($students as $student) {
             OrderDetail::create([
-                'order_id'=>$order->id,
-                'student_name'=>$student['name'],
-                'student_class'=>$student['class'],
-                'student_id_image'=>$student['image']->store('student_id_images')
+                'order_id' => $order->id,
+                'student_name' => $student['name'],
+                'student_class' => $student['class'],
+                'student_id_image' => $student['image']->store('student_id_images')
             ]);
         }
 
@@ -112,7 +126,8 @@ class OrderController extends Controller
         return redirect()->route('order.thankyou')->withToastSuccess('Order created successfully, please check your email');
     }
 
-    public function thankyou(){
+    public function thankyou()
+    {
         return view('thankyou');
     }
 }
